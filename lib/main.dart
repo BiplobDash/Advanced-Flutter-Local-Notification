@@ -1,8 +1,10 @@
 import 'package:advanced_local_notification/home_screen.dart';
+import 'package:advanced_local_notification/notification_service.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+   WidgetsFlutterBinding.ensureInitialized();
+  await initializeNotification();
   runApp(
     const MyApp(),
   );
@@ -10,8 +12,10 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+   static GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
   @override
   Widget build(BuildContext context) {
+    
     return MaterialApp(
       title: 'Notification',
       debugShowCheckedModeBanner: false,
@@ -21,7 +25,7 @@ class MyApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: const HomePage(),
     );
   }
 }
